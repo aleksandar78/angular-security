@@ -21,11 +21,13 @@ export class AuthGuard implements CanActivate {
     return this.service.securityObject.isAuthenticated &&
       this.service.securityObject[claimType]
       ? true
-      : this.goToLoginPage();
+      : this.goToLoginPage(state.url);
   }
 
-  private goToLoginPage() {
-    this.router.navigate(['/login']);
+  private goToLoginPage(requestedUrl: string) {
+    this.router.navigate(['/login'], {
+      queryParams: { returnUrl: requestedUrl }
+    });
     return false;
   }
 }
