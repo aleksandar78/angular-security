@@ -4,6 +4,7 @@ import { CategoryListComponent } from './category/category-list.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProductDetailComponent } from './product/product-detail.component';
 import { ProductListComponent } from './product/product-list.component';
+import { AuthGuard } from './security/auth.guard';
 import { LoginComponent } from './security/login.component';
 
 const routes: Routes = [
@@ -13,15 +14,21 @@ const routes: Routes = [
   },
   {
     path: 'products',
-    component: ProductListComponent
+    component: ProductListComponent,
+    canActivate: [AuthGuard],
+    data: { claimType: 'canAccessProduct' }
   },
   {
     path: 'productDetail/:id',
-    component: ProductDetailComponent
+    component: ProductDetailComponent,
+    canActivate: [AuthGuard],
+    data: { claimType: 'canAccessProduct' }
   },
   {
     path: 'categories',
-    component: CategoryListComponent
+    component: CategoryListComponent,
+    canActivate: [AuthGuard],
+    data: { claimType: 'canAccessCategories' }
   },
   {
     path: 'login',
