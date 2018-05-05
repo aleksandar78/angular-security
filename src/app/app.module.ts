@@ -1,17 +1,18 @@
-import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import {
-  MatGridListModule,
-  MatToolbarModule,
-  MatSidenavModule,
   MatButtonModule,
-  MatIconModule,
-  MatListModule,
   MatCardModule,
-  MatTableModule,
   MatFormFieldModule,
+  MatGridListModule,
+  MatIconModule,
   MatInputModule,
-  MatSelectModule
+  MatListModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatTableModule,
+  MatToolbarModule
 } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,10 +20,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CategoryListComponent } from './category/category-list.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { SidenavComponent } from './menu/sidenav.component';
 import { ProductDetailComponent } from './product/product-detail.component';
 import { ProductListComponent } from './product/product-list.component';
-import { SidenavComponent } from './menu/sidenav.component';
 import { ProductService } from './product/product.service';
+import { LoginComponent } from './security/login.component';
 
 @NgModule({
   declarations: [
@@ -31,10 +33,12 @@ import { ProductService } from './product/product.service';
     ProductListComponent,
     ProductDetailComponent,
     CategoryListComponent,
-    SidenavComponent
+    SidenavComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
