@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
-import { AppUserAuth } from './app-user-auth';
-import { AppUser } from './app-user';
+import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
+import { AppUser } from './app-user';
+import { AppUserAuth } from './app-user-auth';
 import { LOGIN_MOCKS } from './login-mocks';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SecurityService {
-
   securityObject: AppUserAuth = new AppUserAuth();
 
-  constructor() { }
+  constructor(private router: Router) {}
 
   resetSecurityObject(): void {
     this.securityObject.bearerToken = '';
@@ -33,7 +33,9 @@ export class SecurityService {
     // do not create new app user auth object, that will
     // destroy all object references
     const authenticatedUser = LOGIN_MOCKS.find(
-      existingUser => existingUser.userName.toLocaleLowerCase() === user.userName.toLocaleLowerCase()
+      existingUser =>
+        existingUser.userName.toLocaleLowerCase() ===
+        user.userName.toLocaleLowerCase()
     );
     Object.assign(this.securityObject, authenticatedUser);
 
@@ -46,5 +48,6 @@ export class SecurityService {
 
   logout(): void {
     this.resetSecurityObject();
+    this.router.navigate(['/']);
   }
 }
