@@ -12,7 +12,7 @@
       <ng-container matColumnDef="edit">
         <mat-header-cell *matHeaderCellDef>Edit</mat-header-cell>
         <mat-cell *matCellDef="let product">
-          <button mat-button>
+          <button mat-button *ngIf="securityObject.canEditProduct">
             <mat-icon>edit</mat-icon>
           </button>
         </mat-cell>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
+import { AppUserAuth } from '../security/app-user-auth';
+import { SecurityService } from '../security/security.service';
 import { ProductService } from './product.service';
 
 @Component({
@@ -9,18 +11,16 @@ import { ProductService } from './product.service';
 })
 export class ProductListComponent implements OnInit {
   dataSource: MatTableDataSource<any>;
-  displayedColumns = [
-    'edit',
-    'name',
-    'date',
-    'price',
-    'url',
-    'delete'
-  ];
+  displayedColumns = ['edit', 'name', 'date', 'price', 'url', 'delete'];
+  securityObject: AppUserAuth;
 
-  constructor(private service: ProductService) {}
+  constructor(
+    private service: ProductService,
+    private securitySrv: SecurityService
+  ) {}
 
   ngOnInit() {
+    this.securityObject = this.securitySrv.securityObject;
     this.service
       .getProducts()
       .subscribe(

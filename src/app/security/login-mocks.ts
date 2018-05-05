@@ -7,7 +7,7 @@ export const LOGIN_MOCKS: AppUserAuth[] = [
     isAuthenticated: true,
     canAccessProduct: true,
     canAddProduct: true,
-    canEditProduct: true,
+    canEditProduct: false,
     canAccessCategories: true,
     canAddCategory: false
   },
