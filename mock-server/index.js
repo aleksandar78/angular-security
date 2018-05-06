@@ -1,7 +1,13 @@
 const express = require('express');
+const bodyParser = require('body-parser')
 const cors = require('cors');
 const app = express();
 
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyParser.json())
 app.use(cors());
 
 const info = {
@@ -44,7 +50,44 @@ const products = [
   }
 ];
 
+const auth_users = [
+  {
+    userName: 'AlexP',
+    bearerToken: 'daf3q03fjaofa',
+    isAuthenticated: true,
+    canAccessProduct: true,
+    canAddProduct: true,
+    canEditProduct: false,
+    canAccessCategories: true,
+    canAddCategory: false
+  },
+  {
+    userName: 'StefanP',
+    bearerToken: 'd32323fjaofa',
+    isAuthenticated: true,
+    canAccessProduct: false,
+    canAddProduct: false,
+    canEditProduct: false,
+    canAccessCategories: true,
+    canAddCategory: true
+  }
+];
+
+const handleAuthentication = (req, res) => {
+  if (!req.body || !req.body.userName) {
+    return res.send(400);
+  }
+
+  const user = auth_users.find(user => user.userName === req.body.userName);
+  if (!!user) {
+    res.send(user);
+  } else {
+    res.send(404);
+  }
+};
+
 app.get('/', (req, res) => res.send(info));
 app.get('/products', (req, res) => res.send(products));
+app.get('/security', (req, res) => handleAuthentication(req, res));
 
 app.listen(3000, () => console.log('Angular Authentication Mock Server runs on port 3000!'));
