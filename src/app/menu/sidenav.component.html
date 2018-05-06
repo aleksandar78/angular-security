@@ -3,7 +3,7 @@
     <mat-sidenav #sidenav class="sidenav-menu" mode="side">
       <mat-nav-list>
         <a mat-list-item routerLink="/dashboard">Home</a>
-        <a mat-list-item *ngIf="securityObject.canAccessProduct" routerLink="/products">Products</a>
+        <a mat-list-item *hasClaim="'canAccessProduct'" routerLink="/products">Products</a>
         <a mat-list-item *ngIf="securityObject.canAccessCategories" routerLink="/categories">Category</a>
       </mat-nav-list>
     </mat-sidenav>

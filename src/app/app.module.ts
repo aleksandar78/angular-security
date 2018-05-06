@@ -25,6 +25,7 @@ import { ProductDetailComponent } from './product/product-detail.component';
 import { ProductListComponent } from './product/product-list.component';
 import { ProductService } from './product/product.service';
 import { LoginComponent } from './security/login.component';
+import { HasClaimDirective } from './security/has-claim.directive';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { LoginComponent } from './security/login.component';
     ProductDetailComponent,
     CategoryListComponent,
     SidenavComponent,
-    LoginComponent
+    LoginComponent,
+    HasClaimDirective
   ],
   imports: [
     BrowserModule,

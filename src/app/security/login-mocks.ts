@@ -6,7 +6,7 @@ export const LOGIN_MOCKS: AppUserAuth[] = [
     bearerToken: 'daf3q03fjaofa',
     isAuthenticated: true,
     canAccessProduct: true,
-    canAddProduct: true,
+    canAddProduct: false,
     canEditProduct: false,
     canAccessCategories: true,
     canAddCategory: false

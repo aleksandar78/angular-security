@@ -13,6 +13,10 @@ export class SecurityService {
 
   constructor(private router: Router) {}
 
+  hasClaim(claimType: any): boolean {
+    return this.securityObject[claimType] === true;
+  }
+
   resetSecurityObject(): void {
     this.securityObject.bearerToken = '';
     this.securityObject.userName = '';
