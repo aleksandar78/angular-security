@@ -4,8 +4,6 @@
 This project demonstraits how to protect Angular SPA application
 using JWT.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0-rc.7.
-
 ## Hot to run application:
 Clone repository:
 ```shell
